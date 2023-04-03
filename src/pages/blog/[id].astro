@@ -1,9 +1,34 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
+import type { Post } from "../../types/Post";
+import PostDetail from "../../components/BlogPosts/PostDetail.vue";
 
 const { id } = Astro.params;
+const notFoundPostTitle = "The post you are looking for is not there :(";
+let post: Post = null;
+let postNotFound = false;
+
+const response = await fetch(`http://localhost:3000/api/posts/${id}`);
+
+if (response.ok) {
+  post = await response.json();
+} else {
+  postNotFound = true;
+}
+
+const postTitle = post?.title || notFoundPostTitle;
+const postSubtitle = postNotFound ? "Just go back!" : "";
 ---
 
-<BlogLayout tabTitle={id} pageTitle="Blog title">
-  <p>{id}</p>
+<BlogLayout
+  tabTitle={id}
+  pageTitle={postTitle}
+  pageSubtitle={postSubtitle}
+  centerTitle={postNotFound}
+>
+  <a class="hover:text-light-pink/75" href="/blog" slot="header"
+    >&#8592; Go Back!</a
+  >
+
+  {post && <PostDetail post={post} />}
 </BlogLayout>
