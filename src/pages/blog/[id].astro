@@ -1,0 +1,9 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+const { id } = Astro.params;
+---
+
+<BlogLayout tabTitle={id} pageTitle="Blog title">
+  <p>{id}</p>
+</BlogLayout>

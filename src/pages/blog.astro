@@ -1,0 +1,16 @@
+---
+import BlogPostsList from "../components/BlogPosts/BlogPostsList.vue";
+import BlogLayout from "../layouts/BlogLayout.astro";
+const pageTitle = "Blog";
+const pageSubtitle = "Just the stuff that I come up with";
+---
+
+<BlogLayout
+  tabTitle={pageTitle}
+  pageTitle={pageTitle}
+  pageSubtitle={pageSubtitle}
+>
+  <div class="border-dotted border-light-pink border-t rounded">
+    <BlogPostsList />
+  </div>
+</BlogLayout>
