@@ -21,14 +21,14 @@ const { posts } = defineProps<BlogPostProps>();
       <div class="ml-2">
         <div class="flex flex-row items-end">
           <div class="text-sm mr-2 font-big-title text-lion">
-            DRM-{{ post.id.toString().padStart(3, "0") }}
+            {{ post.tag.short }}-{{ post.sequence.toString().padStart(3, "0") }}
           </div>
 
           <div class="text-2xl font-big-title">{{ post.title }}</div>
         </div>
 
         <div class="ml-3">
-          <p class="text-md">{{ post.description }}</p>
+          <p class="text-md">{{ `${post.body.slice(0, 100)}...` }}</p>
         </div>
       </div>
     </a>

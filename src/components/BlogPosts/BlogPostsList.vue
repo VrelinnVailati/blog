@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import BlogPost from "./BlogPost.vue";
 
-const { posts } = await fetch("http://localhost:3000/api/posts").then((res) =>
+const { posts } = await fetch(`${import.meta.env.API_URL}/posts`).then((res) =>
   res.json()
 );
 </script>
