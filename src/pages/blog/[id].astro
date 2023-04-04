@@ -8,7 +8,7 @@ const notFoundPostTitle = "The post you are looking for is not there :(";
 let post: Post = null;
 let postNotFound = false;
 
-const response = await fetch(`http://localhost:3000/api/posts/${id}`);
+const response = await fetch(`${import.meta.env.API_URL}/posts/${id}`);
 
 if (response.ok) {
   post = await response.json();
@@ -21,14 +21,14 @@ const postSubtitle = postNotFound ? "Just go back!" : "";
 ---
 
 <BlogLayout
-  tabTitle={id}
+  tabTitle={postTitle}
   pageTitle={postTitle}
   pageSubtitle={postSubtitle}
   centerTitle={postNotFound}
 >
-  <a class="hover:text-light-pink/75" href="/blog" slot="header"
-    >&#8592; Go Back!</a
-  >
+  <a class="hover:text-light-pink/75" href="/blog" slot="header">
+    &#8592; Go Back!
+  </a>
 
   {post && <PostDetail post={post} />}
 </BlogLayout>
