@@ -1,6 +1,10 @@
 export type Post = {
-  id: number;
+  id: string;
+  sequence: number;
   title: string;
   body: string;
-  description: string;
+  tag: {
+    short: string;
+    long: string;
+  };
 };
