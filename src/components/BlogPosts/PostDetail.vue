@@ -13,6 +13,6 @@ const htmlBody = cleanHtmlBody(post.body);
 
 <template>
   <div class="border-t rounded-lg border-lion">
-    <div class="flex flex-col items-center" v-html="htmlBody" />
+    <div class="flex flex-col items-center mx-5" v-html="htmlBody" />
   </div>
 </template>
